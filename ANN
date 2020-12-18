@@ -1,0 +1,7 @@
+The nnfor (development version here) package for R facilitates time series forecasting with Multilayer Perceptrons (MLP) and Extreme Learning Machines (ELM). 
+Currently (version 0.9.6) it does not support deep learning, though the plan is to extend this to this direction in the near future. 
+Currently, it relies on the neuralnet package for R, which provides all the machinery to train MLPs. 
+The training of ELMs is written within the nnfor package. 
+Note that since neuralnet cannot tap on GPU processing, large networks tend to be very slow to train. 
+nnfor differs from existing neural network implementations for R in that it provides code to automatically 
+design networks with reasonable forecasting performance, but also provide in-depth control to the experienced user. The automatic specification is designed with parsimony in mind. This increases the robustness of the resulting networks, but also helps reduce the training time.
