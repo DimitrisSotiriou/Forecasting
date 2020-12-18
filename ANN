@@ -1,7 +1,26 @@
-The nnfor (development version here) package for R facilitates time series forecasting with Multilayer Perceptrons (MLP) and Extreme Learning Machines (ELM). 
-Currently (version 0.9.6) it does not support deep learning, though the plan is to extend this to this direction in the near future. 
-Currently, it relies on the neuralnet package for R, which provides all the machinery to train MLPs. 
-The training of ELMs is written within the nnfor package. 
-Note that since neuralnet cannot tap on GPU processing, large networks tend to be very slow to train. 
-nnfor differs from existing neural network implementations for R in that it provides code to automatically 
-design networks with reasonable forecasting performance, but also provide in-depth control to the experienced user. The automatic specification is designed with parsimony in mind. This increases the robustness of the resulting networks, but also helps reduce the training time.
+Notes:
+mlp uses by default hyperbolic tangent as transfer function.
+
+How to deal with the number of epochs, the stopping criteria and the optimization algorithm.
+nnfor runs neuralnet package for R under the hood, which details all the training options. We can pass those to mlp() as well. Defaults work well.
+
+Multiple steps ahead prediction
+The multiple step forecast in nonlinear model is intractable because we loose normality after the first step. 
+However it can still be acheived from bootstrap, Monte Carlo or Naive method.
+Since we do not observed the complete nonlinearity captured by the network and we hope to remain in regions of values that you have more or less seen in the past. Then bootstrap is the case.
+
+Address seasonality
+- dummy variables (deterministic) and 
+- lags (stochastic)
+
+Linearity/Non-linearity
+mpl is inherently nonlinear but it can approximate linear behaviours quite well
+
+What algorithm is being used for training:
+rprop: stands for resilient backpropagation, is a learning heuristic for supervised learning in feedforward artificial neural networks. This is a first-order optimization algorithm.
+no need a validation set for training purposes
+
+How to forecast with mlp usings xreg args.
+1. Model x variable, forecast and feed y model with x (fit/actual+forecast)
+2. Use lags of regressors
+Limitations: 1. add uncertainty while 2. assumes that connection holds for y and x-lagged.
