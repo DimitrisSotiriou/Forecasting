@@ -1,3 +1,9 @@
 Formally, overfitting referes to the situation where a model learns the data but also the noise that is part of training data to the extent that it negatively impacts the performance of the model on new unseen data.
 In other worlds, the noise (i.e. random fluctuations) in the training set is learned as rules/pattenrs by the model. However, these noisy learned representations do not apply to new unseen data and thus, the model’s performance (i.e. accuracy, MSE, MAE) is negatively impacted.
 A textbook case of overfitting is when the model’s error on the training set (i.e. during training) is very low but then, the model’s error on the test set (i.e. unseen samples) is large!
+
+How to (potentially) limit Overfitting
+The most common problem in the ML learning filed is overfitting.
+Action that could (potentially) limit overfitting:
+We can use a Cross-validation (CV) scheme.
+Reduce the complexity of the model (make the model less complex).
